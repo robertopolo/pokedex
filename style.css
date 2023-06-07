@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.6rem;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #DC143C;
+    color: white;
+    height: 5rem;
+    padding: 1rem;
+    align-items: center;
+}
+
+header > h1{
+    font-size: 4rem;
+    margin: 0.5rem 0rem;
+}
+
+header > input{
+    font-size: 1.5rem;
+    width: 20rem;
+    margin: 0.5rem 0rem;
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+.pagination{
+    background-color: #DC143C;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 5rem;
+}
+
+.pagination-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 4rem;
+    width: 4rem;
+    background-color: #fff;
+    color: #000;
+    font-weight: 700;
+    margin: auto 2rem;
+    list-style: none;
+    border-radius: 2rem;
+    font-size: 2rem;
+}
+
+.pagination-item:hover{
+    background-color: #c2c2c2;
+    color: #000;
+}
+
+.page-active{
+    background-color: #000;
+    color: #fff;
+}
+
+.page-active:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+#pokemon-list{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.pokemon-card{
+    width: calc(85% / 5);
+    cursor: pointer;
+    list-style: none;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    height: 25rem;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 2rem;
+    background-color: #ebebeb;
+}
+
+.pokemon-card:hover{
+    box-shadow: 0 0 1rem 0.2rem rgb(0 0 0/ 60%);
+}
+
+.pokemon-card img{
+    height: 80%;
+    width: 90%;
+    object-fit: scale-down;
+}
