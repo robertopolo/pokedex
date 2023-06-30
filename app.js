@@ -33,7 +33,7 @@ async function createPaginationList() {
   for (let i = rangeStart; i <= rangeEnd; i++) {
     createPaginationItem(i);
   }
-
+  
   if (currentPage < totalPages) {
     createPaginationItem(">");
   }
@@ -55,13 +55,13 @@ function createPaginationItem(text) {
   if(parseInt(text) === currentPage){
     liPagination.classList.add("page-active");
   }
-
+  
   paginationList.appendChild(liPagination);
 }
 
 function changePage(item) {
   const liText = item.innerText;
-
+  
   if (liText === "<") {
     currentPage -= 1;
   } else if (liText === ">") {
@@ -69,7 +69,7 @@ function changePage(item) {
   } else {
     currentPage = parseInt(liText);
   }
-
+  
   if (currentPage === rangeEnd) {
     rangeStart += 1;
     rangeEnd += 1;
@@ -91,7 +91,7 @@ function createPokemonsListItem(img, name) {
   const pokemonImage = document.createElement("img");
   const pokemonName = document.createElement("p");
   pokemonItem.setAttribute("class", "pokemon-card");
-  pokemonImage.setAttribute("src", img);
+  pokemonImage.setAttribute("src", img === null ? "./img/404.jpg" : img);
   pokemonName.textContent = name;
   pokemonItem.appendChild(pokemonImage);
   pokemonItem.appendChild(pokemonName);
@@ -102,8 +102,8 @@ async function createPokemonList(offset) {
   pokemonList.innerHTML = "";
   const { results: pokemons } = await fetchData(
     apiUrl +
-      "?" +
-      limitParameter +
+    "?" +
+    limitParameter +
       pokemonsPerPage +
       "&" +
       offsetParameter +
@@ -116,8 +116,9 @@ async function createPokemonList(offset) {
         pokemon.sprites.other.dream_world.front_default,
         pokemon.name
       );
-    } catch (error) {
-      createPokemonsListItem("./img/404.avif", "Not found");
+    }
+    catch (error) {
+      createPokemonsListItem("./img/404.jpg", "Not found");
     }
   });
 }
@@ -132,8 +133,15 @@ function searchPokemon(){
   })
 }
 
+function showDetails(){
+  const pokemonCard = document.querySelectorAll(".pokemon-card");
+  pokemonCard.addEventListener("click", (e)=>console.log(e))
+}
+
 createPaginationList();
 
 createPokemonList(offsetValue);
 
 searchPokemon();
+
+showDetails();
